@@ -1,2 +1,1 @@
-# play-with-js
-# play-with-js
+# just a little fun with js for beginners !
