@@ -43,17 +43,6 @@ function chekcing() {
 
     let random = getRandomInt(1, 6);
 
-    if (playerOneTotalResult >= 50) {
-        randomDice.innerText = '🥇 Player One won';
-        block.classList.remove('translate-y-14');
-        winner = true;
-    }
-    else if (playerTwoTotalResult >= 50) {
-        randomDice.innerText = '🥇 Player two won';
-        block.classList.remove('translate-y-14');
-        winner = true;
-    }
-
     if (playerTwo === true) {
         if (random !== 1) {
             sum += random;
@@ -82,15 +71,44 @@ function chekcing() {
             showMessage(playerOneScore, 0);
         }
     };
-
 }
 // ====> ROll THE DICE SECTION::END
 
+
+setInterval(() => {
+    if (playerOneTotalResult >= 50) {
+
+        playerOne.classList.remove("from-black/50");
+        playerOne.classList.remove("to-slate-950/10");
+        secondPlayer.classList.remove("bg-gradient-to-br");
+        block.classList.remove('translate-y-14');
+
+        dices.classList.add('hidden');
+        playerOne.classList.add('bg-gradient-to-br');
+        playerOne.classList.add("from-lime-500/20");
+        playerOne.classList.add("to-lime-700/80");
+
+        winner = true;
+    }
+    else if (playerTwoTotalResult >= 50) {
+
+        secondPlayer.classList.remove('from-black/50');
+        secondPlayer.classList.remove("to-slate-950/10");
+        block.classList.remove('translate-y-14');
+        playerOne.classList.remove("bg-gradient-to-br");
+
+        dices.classList.add('hidden');
+        secondPlayer.classList.add('bg-gradient-to-br');
+        secondPlayer.classList.add("from-lime-500/20");
+        secondPlayer.classList.add("to-lime-700/80");
+
+        winner = true;
+    }
+}, 100);
+
+
 // ====> HOLD BUTTON::BEGIN
 function holdHandler() {
-
-    console.log('switched');
-
     if (!winner) dices.classList.add('hidden');
 
     if (playerTwo === false) {
@@ -99,8 +117,8 @@ function holdHandler() {
         showMessage(playerOneTotal, playerOneTotalResult);
         showMessage(playerOneScore, 0);
         dices.classList.add('hidden');
-        playerOne.classList.remove('glass');
-        secondPlayer.classList.add('glass');
+        playerOne.classList.remove('bg-gradient-to-br');
+        secondPlayer.classList.add('bg-gradient-to-br');
         playerTwo = true;
     }
     else if (playerTwo === true) {
@@ -109,8 +127,8 @@ function holdHandler() {
         showMessage(playerTwoTotal, playerTwoTotalResult);
         showMessage(playerTwoScore, 0);
         dices.classList.add('hidden');
-        playerOne.classList.add('glass');
-        secondPlayer.classList.remove('glass');
+        playerOne.classList.add('bg-gradient-to-br');
+        secondPlayer.classList.remove('bg-gradient-to-br');
         playerTwo = false;
     }
 }
@@ -123,6 +141,12 @@ function newGame() {
 
     block.classList.add('translate-y-14');
     dices.classList.add('hidden');
+
+    playerOne.classList.remove("from-lime-500/20");
+    playerOne.classList.remove("to-lime-700/80");
+
+    secondPlayer.classList.remove("from-lime-500/20");
+    secondPlayer.classList.remove("to-lime-700/80");
 
     showMessage(playerOneTotal, 0);
     showMessage(playerOneScore, 0);
