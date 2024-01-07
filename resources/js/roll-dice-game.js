@@ -10,6 +10,10 @@ function showMessage(value, message) {
     value.innerText = message;
 }
 
+
+let plrOneName = document.getElementById('plr-one-name');
+let plrTwoName = document.getElementById('plr-two-name');
+
 const newBtn = document.getElementById('new-game-btn');
 const holdBtn = document.getElementById('hold-btn');
 const diceBtn = document.getElementById('dice-btn');
@@ -37,6 +41,9 @@ let playerTwoTotalResult = 0;
 diceBtn.addEventListener('click', chekcing);
 holdBtn.addEventListener('click', holdHandler);
 newBtn.addEventListener('click', newGame);
+
+plrOneName.innerText = prompt('Enter your username');
+plrTwoName.innerText = prompt('Enter your username');
 
 // ====> ROll THE DICE SECTION::BEGIN
 function chekcing() {
@@ -134,7 +141,7 @@ function holdHandler() {
 }
 // ====> HOLD BUTTON::END
 
-// ====> NEW GANE BUTTON::BEGIN
+// ====> NEW GAME BUTTON::BEGIN
 function newGame() {
 
     console.warn("You have restarted the game");
@@ -158,4 +165,4 @@ function newGame() {
 
     sum = 0;
 }
-// ====> NEW GANE BUTTON::END
+// ====> NEW GAME BUTTON::END
